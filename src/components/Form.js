@@ -2,12 +2,15 @@ import React, {useState}from 'react';
 import './form.css'
 
 function Form() {
-    const [name,setName]=useState("");
+    const [name,setName]=useState();
     const [gender,setGender]=useState();
     const [province,setProvince]=useState();
     const [comment,setComment]=useState();
 
     const [list,setList]=useState([]);
+
+    // const[show,setShow]=useState(false);
+    // const[edit,setEdit]=useState();
 
     const Submit=(e)=>{
         e.preventDefault();
@@ -27,11 +30,18 @@ function Form() {
     }
 
     const Edit=(id)=>{
-        setName(list[id])
-        setGender(list[id])
-        setProvince(list[id])
+        setName(list.name[id])
+        setGender(list.gender[id])
+        setProvince(list.province[id])
         setComment(list[id])
+        console.log()
+        // setShow(true)
+        // setEdit(id)
     }
+
+    // const Update=()=>{
+    //     list.slice(edit,1,name,gender,province,comment)
+    // }
 
     return (
         <div className='container'>
@@ -51,7 +61,7 @@ function Form() {
                     <tr>
                         <th><label className='province'>Province</label></th>
                         <th>
-                            <select value={province} onChange={e=>setProvince((e).target.value)}>
+                            <select className='select' value={province} onChange={e=>setProvince((e).target.value)}>
                                 <option>Western Province</option>
                                 <option>Eastern Province</option>
                             </select>
@@ -61,12 +71,12 @@ function Form() {
                         <th><label className='comment'>Comment</label></th>
                         <th className='comment_th'><input className='comment' type="text" value={comment} onChange={(e)=>setComment(e.target.value)}/></th>
                     </tr>
-                    <tr>
-                        <button onClick={Submit}>Submit</button>
-                    </tr>
                 </table>
+                <button className='submit_button' onClick={Submit}>Submit</button>
+                {/* {!show?<button className='submit_button' onClick={Submit}>Submit</button>:<button className='submit_button' onClick={Update}>Update</button>} */}
             </div>
             <div className='section2'>
+                <div className='scrollBar'>
                 <table className='displaying_table'>
                     <tr>
                         <th className='displaying_th'>ID</th>
@@ -92,6 +102,7 @@ function Form() {
                         )
                         }
                 </table>
+                </div>
             </div>
         </div>
     );

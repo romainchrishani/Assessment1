@@ -20,12 +20,28 @@
   border-style: solid;
   margin: 5px;
 }
+.select{
+  width: 170px;
+}
+.comment{
+  width: 100%;
+  padding: 12px 10px;
+  margin: 10px 0;
+  box-sizing: border-box;
+}
 .displaying_table, .displaying_th, .displaying_td {
   border: 1px solid;
   border-collapse: collapse;
+  text-align: center;
+  height: 50px;
+  width: 500px;
 }
-.comment_th{
-  height: 200%;
+.submit_button{
+  color: #ffffff;
+  background-color: cadetblue;
+  position:relative; 
+  right:60px; 
+  top:70px;
 }
 .delete_button{
   color: #ffffff;
