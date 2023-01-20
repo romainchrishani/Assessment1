@@ -1,0 +1,37 @@
+.section1{
+  float: left;
+  padding: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 550px;
+  width:40%;
+  border-style: solid;
+  margin: 5px;
+}
+.section2{
+  float: left;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 570px;
+  width:50%;
+  border-style: solid;
+  margin: 5px;
+}
+.displaying_table, .displaying_th, .displaying_td {
+  border: 1px solid;
+  border-collapse: collapse;
+}
+.comment_th{
+  height: 200%;
+}
+.delete_button{
+  color: #ffffff;
+  background-color: darkblue;
+}
+.edit_button{
+  color: #ffffff;
+  background-color: red;
+}
