@@ -2,15 +2,12 @@ import React, {useState}from 'react';
 import './form.css'
 
 function Form() {
-    const [name,setName]=useState();
-    const [gender,setGender]=useState();
-    const [province,setProvince]=useState();
-    const [comment,setComment]=useState();
+    const [name,setName]=useState("");
+    const [gender,setGender]=useState("");
+    const [province,setProvince]=useState("");
+    const [comment,setComment]=useState("");
 
     const [list,setList]=useState([]);
-
-    // const[show,setShow]=useState(false);
-    // const[edit,setEdit]=useState();
 
     const Submit=(e)=>{
         e.preventDefault();
@@ -19,29 +16,24 @@ function Form() {
         if(name&&comment){
             setList((ls)=>[...ls,data])
             setName("")
+            setGender("")
+            setProvince("")
             setComment("")
         }
     }
 
     const Delete=(index)=>{
-        // console.log(index)
+        console.log(index)
         list.splice(index,1)
         setList([...list])
     }
 
-    const Edit=(id)=>{
-        setName(list.name[id])
-        setGender(list.gender[id])
-        setProvince(list.province[id])
-        setComment(list[id])
-        console.log()
-        // setShow(true)
-        // setEdit(id)
+    const Edit=([id,name,gender,province,comment])=>{
+        setName(name)
+        setGender(gender)
+        setProvince(province)
+        setComment(comment)
     }
-
-    // const Update=()=>{
-    //     list.slice(edit,1,name,gender,province,comment)
-    // }
 
     return (
         <div className='container'>
@@ -96,7 +88,7 @@ function Form() {
                                 <td className='displaying_td'>{a.comment}</td>
                                 <td className='displaying_td'>
                                     <button className='delete_button' onClick={()=>Delete(id)}>Delete</button>
-                                    <button className='edit_button' onClick={()=>Edit(id)}>Edit</button>
+                                    <button className='edit_button' onClick={()=>Edit([a.id,a.name,a.gender,a.province,a.comment])}>Edit</button>
                                 </td>
                             </tr>
                         )
