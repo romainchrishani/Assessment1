@@ -54,6 +54,11 @@ function Form() {
             setComment("")
         }
         console.log(name)
+        ActiveSubmitButton()
+    }
+
+    const ActiveSubmitButton=()=>{
+            setShow(false)
     }
 
     return (
