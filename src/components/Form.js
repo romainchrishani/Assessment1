@@ -9,6 +9,9 @@ function Form() {
 
     const [list,setList]=useState([]);
 
+    const[show,setShow]=useState(false);
+    const[editRecord,setEditRecord]=useState();
+
     const Submit=(e)=>{
         e.preventDefault();
         const data={name,gender,province,comment}
@@ -33,6 +36,24 @@ function Form() {
         setGender(gender)
         setProvince(province)
         setComment(comment)
+        setShow(true)
+        setEditRecord(id)
+    }
+
+    const Update=()=>{
+
+        list.splice(editRecord,1)
+
+        const data={name,gender,province,comment}
+
+        if(name&&comment){
+            setList((ls)=>[...ls,data])
+            setName("")
+            setGender("")
+            setProvince("")
+            setComment("")
+        }
+        console.log(name)
     }
 
     return (
@@ -64,8 +85,8 @@ function Form() {
                         <th className='comment_th'><input className='comment' type="text" value={comment} onChange={(e)=>setComment(e.target.value)}/></th>
                     </tr>
                 </table>
-                <button className='submit_button' onClick={Submit}>Submit</button>
-                {/* {!show?<button className='submit_button' onClick={Submit}>Submit</button>:<button className='submit_button' onClick={Update}>Update</button>} */}
+                {/* <button className='submit_button' onClick={Submit}>Submit</button> */}
+                {!show?(<button className='submit_button' onClick={Submit}>Submit</button>):(<button className='submit_button' onClick={Update}>Update</button>)}
             </div>
             <div className='section2'>
                 <div className='scrollBar'>
