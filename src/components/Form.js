@@ -2,6 +2,7 @@ import React, {useState}from 'react';
 import './form.css'
 
 function Form() {
+    const [id,setId]=useState(1)
     const [name,setName]=useState("");
     const [gender,setGender]=useState("");
     const [province,setProvince]=useState("");
@@ -10,14 +11,16 @@ function Form() {
     const [list,setList]=useState([]);
 
     const[show,setShow]=useState(false);
-    const[editRecord,setEditRecord]=useState();
+    // const[editRecord,setEditRecord]=useState();
 
     const Submit=(e)=>{
         e.preventDefault();
-        const data={name,gender,province,comment}
+        const data={id,name,gender,province,comment}
+        // const data={name,gender,province,comment}
 
         if(name&&comment){
             setList((ls)=>[...ls,data])
+            setId(id+1)
             setName("")
             setGender("")
             setProvince("")
@@ -32,28 +35,34 @@ function Form() {
     }
 
     const Edit=([id,name,gender,province,comment])=>{
+        setId(id)
         setName(name)
         setGender(gender)
         setProvince(province)
         setComment(comment)
         setShow(true)
-        setEditRecord(id)
+        // setEditRecord(id)
     }
 
     const Update=()=>{
+        // list.splice(editRecord,1)
 
-        list.splice(editRecord,1)
+        const currentRecordIndex = list.findIndex((record) => record.id === id);
 
-        const data={name,gender,province,comment}
+        list.splice(currentRecordIndex,1)
+
+
+        const data={id,name,gender,province,comment}
+        // const data={name,gender,province,comment}
 
         if(name&&comment){
             setList((ls)=>[...ls,data])
+            setId(id+1)
             setName("")
             setGender("")
             setProvince("")
             setComment("")
         }
-        console.log(name)
         ActiveSubmitButton()
     }
 
