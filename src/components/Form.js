@@ -2,7 +2,7 @@ import React, {useState}from 'react';
 import './form.css'
 
 function Form() {
-    const [id,setId]=useState(1)
+    const [id,setId]=useState(1);
     const [name,setName]=useState("");
     const [gender,setGender]=useState("");
     const [province,setProvince]=useState("");
@@ -51,13 +51,14 @@ function Form() {
 
         list.splice(currentRecordIndex,1)
 
+        const LastRecordIndex = (list.length)+1;
 
         const data={id,name,gender,province,comment}
         // const data={name,gender,province,comment}
 
         if(name&&comment){
             setList((ls)=>[...ls,data])
-            setId(id+1)
+            setId(LastRecordIndex+1)
             setName("")
             setGender("")
             setProvince("")
